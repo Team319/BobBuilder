@@ -1,0 +1,7 @@
+This Template was created by Josh. This is based off of 2018 code with a lot of modifications. I hope this will
+make the build season coding go faster for us. All values are set to 0 and need to be replaced with the proper
+values for that year. To use download as zip, extract to workspace, change project name and begin! Please
+upload the copy to a new github repo in order to keep the template unchanged.
+
+Thanks, Josh
+	Programmer, 2014-2019
