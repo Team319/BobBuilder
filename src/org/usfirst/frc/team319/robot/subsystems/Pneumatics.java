@@ -15,14 +15,8 @@ public class Pneumatics extends Subsystem {
 	// public boolean isCollectorSolenoidExtended;
 
 	Compressor compressor = new Compressor(0);
-
-	DoubleSolenoid elevatorShifter = new DoubleSolenoid(0, 1);
+	
 	DoubleSolenoid drivetrainShifter = new DoubleSolenoid(2, 3);
-	DoubleSolenoid collectorSolenoid = new DoubleSolenoid(5, 4);
-	DoubleSolenoid winchBrakeShifter = new DoubleSolenoid(6, 7);
-
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.

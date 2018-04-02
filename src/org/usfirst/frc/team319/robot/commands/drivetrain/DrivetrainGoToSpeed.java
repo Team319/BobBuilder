@@ -1,6 +1,7 @@
 package org.usfirst.frc.team319.robot.commands.drivetrain;
 
 import org.usfirst.frc.team319.robot.Robot;
+import org.usfirst.frc.team319.robot.subsystems.Drivetrain;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
@@ -18,8 +19,8 @@ public class DrivetrainGoToSpeed extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.drivetrain.leftLead.selectProfileSlot(Robot.drivetrain.HIGH_GEAR_PROFILE, 0);
-		Robot.drivetrain.rightLead.selectProfileSlot(Robot.drivetrain.HIGH_GEAR_PROFILE, 0);
+		Robot.drivetrain.leftLead.selectProfileSlot(Drivetrain.HIGH_GEAR_PROFILE, 0);
+		Robot.drivetrain.rightLead.selectProfileSlot(Drivetrain.HIGH_GEAR_PROFILE, 0);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

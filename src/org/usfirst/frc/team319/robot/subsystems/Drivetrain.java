@@ -1,7 +1,5 @@
 package org.usfirst.frc.team319.robot.subsystems;
 
-import java.util.ArrayList;
-
 import org.usfirst.frc.team319.models.BobTalonSRX;
 import org.usfirst.frc.team319.models.DriveSignal;
 import org.usfirst.frc.team319.models.LeaderBobTalonSRX;
