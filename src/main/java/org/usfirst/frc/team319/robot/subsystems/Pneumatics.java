@@ -15,9 +15,7 @@ public class Pneumatics extends Subsystem {
 
 	private Compressor compressor = new Compressor(0);
 
-	private DoubleSolenoid hatchCollectorSolenoid = new DoubleSolenoid(2, 3);
-	private DoubleSolenoid fingerSolenoid = new DoubleSolenoid(4, 5);
-	private DoubleSolenoid carriageAndElevatorLockSolenoid = new DoubleSolenoid(6, 7);
+	private DoubleSolenoid sampleSolenoid = new DoubleSolenoid(0, 1);
 
 	public void initDefaultCommand() {
 		setDefaultCommand(new CompressorRun());
@@ -32,34 +30,13 @@ public class Pneumatics extends Subsystem {
 		}
 	}
 
-	public void carriageAndElevatorFloorExtend() {
-		this.carriageAndElevatorLockSolenoid.set(DoubleSolenoid.Value.kForward);
-		Robot.elevator.setIsElevatorFloorSolenoidExtended(true);
+	public void sampleSolenoidExtend() {
+		this.sampleSolenoid.set(DoubleSolenoid.Value.kForward);
+		Robot.sampleSubsystem.setSampleSolenoidExtended(true);
 	}
 
-	public void carriageAndElevatorFloorRetract() {
-		this.carriageAndElevatorLockSolenoid.set(DoubleSolenoid.Value.kReverse);
-		Robot.elevator.setIsElevatorFloorSolenoidExtended(false);
+	public void sampleSOlenoidRetract() {
+		this.sampleSolenoid.set(DoubleSolenoid.Value.kReverse);
+		Robot.sampleSubsystem.setSampleSolenoidExtended(false);
 	}
-
-	public void fingerOpen() {
-		this.fingerSolenoid.set(DoubleSolenoid.Value.kForward);
-		Robot.carriage.setIsFingerOpen(true);
-	}
-
-	public void fingerClose() {
-		this.fingerSolenoid.set(DoubleSolenoid.Value.kReverse);
-		Robot.carriage.setIsFingerOpen(false);
-	}
-
-	public void hatchCollectorArmExtend() {
-		this.hatchCollectorSolenoid.set(DoubleSolenoid.Value.kForward);
-		Robot.carriage.setisFrontHatchCollectorExtended(true);
-	}
-
-	public void hatchCollectorArmRetract() {
-		this.hatchCollectorSolenoid.set(DoubleSolenoid.Value.kReverse);
-		Robot.carriage.setisFrontHatchCollectorExtended(false);
-	}
-
 }

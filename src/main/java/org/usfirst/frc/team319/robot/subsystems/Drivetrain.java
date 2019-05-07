@@ -3,7 +3,6 @@ package org.usfirst.frc.team319.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.team319.follower.FollowsArc;
 
 import org.usfirst.frc.team319.models.BobTalonSRX;
 import org.usfirst.frc.team319.models.DriveMode;
@@ -14,7 +13,7 @@ import org.usfirst.frc.team319.robot.commands.drivetrain.BobDrive;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class Drivetrain extends Subsystem implements FollowsArc {
+public class Drivetrain extends Subsystem {
 
 	public static int DRIVE_PROFILE = 0;
 	public static int ROTATION_PROFILE = 1;
@@ -170,23 +169,4 @@ public class Drivetrain extends Subsystem implements FollowsArc {
 		// SmartDashboard.putNumber("Angle", this.getAngle());
 	}
 
-	@Override
-	public double getDistance() {
-		return rightLead.getPrimarySensorPosition();
-	}
-
-	@Override
-	public TalonSRX getLeft() {
-		return leftLead;
-	}
-
-	@Override
-	public TalonSRX getRight() {
-		return rightLead;
-	}
-
-	@Override
-	public Subsystem getRequiredSubsystem() {
-		return this;
-	}
 }

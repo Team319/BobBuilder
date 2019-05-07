@@ -8,21 +8,14 @@
 package org.usfirst.frc.team319.robot;
 
 import org.usfirst.frc.team319.models.RobotMode;
-import org.usfirst.frc.team319.robot.commands.robot.RevertClimbMode;
-import org.usfirst.frc.team319.robot.commands.robot.SetRobotMode;
-import org.usfirst.frc.team319.robot.subsystems.BBArm;
-import org.usfirst.frc.team319.robot.subsystems.Carriage;
 import org.usfirst.frc.team319.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team319.robot.subsystems.Elevator;
 import org.usfirst.frc.team319.robot.subsystems.Limelight;
 import org.usfirst.frc.team319.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team319.robot.subsystems.SampleSubsystem;
 
-import edu.wpi.cscore.CameraServerJNI;
-import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -35,9 +28,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
 
 	Command autonomousCommand;
-	public static final BBArm bbarm = new BBArm();
-	public static final Elevator elevator = new Elevator();
-	public static final Carriage carriage = new Carriage();
+	public static final SampleSubsystem sampleSubsystem = new SampleSubsystem();
 	public static final Limelight limelight = new Limelight();
 	public static final Pneumatics pneumatics = new Pneumatics();
 	public static final Drivetrain drivetrain = new Drivetrain();
@@ -52,10 +43,6 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		limelight.setStreamType();// sets secondary as the main camera feed.
 		Robot.drivetrain.setDrivetrainPositionToZero();
-		SmartDashboard.putData("Climb Mode", new SetRobotMode(RobotMode.Climb));
-		SmartDashboard.putData("Normal Mode", new SetRobotMode(RobotMode.Normal));
-		SmartDashboard.putData("EXIT CLIMB MODE", new RevertClimbMode());
-		SmartDashboard.putNumber("LimeightX", limelight.circularBufferX());
 
 		// CameraServer.getInstance().startAutomaticCapture();
 	}
@@ -70,19 +57,11 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 		limelight.setStreamType();// sets secondary as the main camera feed.
 		limelight.setLedModeOff();
-		Robot.elevator.forceSetTargetPosition(Robot.elevator.getCurrentPosition());
-		Robot.bbarm.forceSetTargetPosition(Robot.bbarm.getCurrentPosition());
 	}
 
 	@Override
 	public void autonomousInit() {
-		limelight.setStreamType();// sets secondary as the main camera feed.
-		/*
-		 * autonomousCommand = new DrivetrainDoNothing();
-		 * 
-		 * // schedule the autonomous command (example) if (autonomousCommand != null) {
-		 * autonomousCommand.start(); }
-		 */
+		limelight.setStreamType();
 	}
 
 	/**
@@ -102,8 +81,6 @@ public class Robot extends TimedRobot {
 			autonomousCommand.cancel();
 		}
 		limelight.setStreamType();// sets secondary as the main camera feed.
-		Robot.elevator.forceSetTargetPosition(Robot.elevator.getCurrentPosition());
-		Robot.bbarm.forceSetTargetPosition(Robot.bbarm.getCurrentPosition());
 	}
 
 	/**

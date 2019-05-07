@@ -5,26 +5,19 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team319.robot.commands.bba;
-
-import org.usfirst.frc.team319.robot.Robot;
+package org.usfirst.frc.team319.robot.commands.SampleCommands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class BbaConfigSoftLimits extends Command {
-  private boolean softLimitsEnabled = true;
-
-  public BbaConfigSoftLimits(boolean softLimitsEnabled) {
-
+public class SampleCommand extends Command {
+  public SampleCommand() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.bbarm);
-    this.softLimitsEnabled = softLimitsEnabled;
+    // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.bbarm.configSoftLimits(this.softLimitsEnabled);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -35,7 +28,7 @@ public class BbaConfigSoftLimits extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true
